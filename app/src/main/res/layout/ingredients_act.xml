@@ -6,17 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="uk.co.tommywebdesign.feedmeapplication.activities.Ingredients">
+    tools:context="uk.co.tommywebdesign.feedmeapplication.activities.Ingredients"
+    android:background="@color/colorAll">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorAll"
+        android:id="@+id/frag_container">
+        android:id="@+id/ingredients_main_frag_holder">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="uk.co.tommywebdesign.feedmeapplication.fragments.NewIngredientFragment"
+            android:id="@+id/new_ingredient_fragment"
+            tools:layout="@layout/ingredient_new_frag" />
 
         <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="uk.co.tommywebdesign.feedmeapplication.fragments.IngredientsFragment"
             android:id="@+id/ingredients_fragment"
-            tools:layout="@layout/ingredients_frag" />
+            tools:layout="@layout/ingredients_frag"
+            />
+
     </FrameLayout>
 </LinearLayout>

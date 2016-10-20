@@ -2,15 +2,16 @@ package uk.co.tommywebdesign.feedmeapplication.fragments;
 
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.tommywebdesign.feedmeapplication.R;
-import uk.co.tommywebdesign.feedmeapplication.app_classes.DummyData;
+import uk.co.tommywebdesign.feedmeapplication.activities.Coord;
+import uk.co.tommywebdesign.feedmeapplication.activities.Ingredients;
 import uk.co.tommywebdesign.feedmeapplication.app_classes.Ingredient;
 import uk.co.tommywebdesign.feedmeapplication.app_classes.IngredientAdapter;
 import uk.co.tommywebdesign.feedmeapplication.app_classes.IngredientsData;
@@ -38,6 +40,8 @@ public class IngredientsFragment extends Fragment implements IngredientAdapter.I
     private ImageButton vegBtn;
     private ImageButton allBtn;
     private int  listColor =0;
+    private Button newIngredientBtn;
+    private  Button getRecipesBtn;
 
     private String fragColors[] ={"#ff554c","#39ff64", "#3d7eff","#fff185"};
 
@@ -67,7 +71,6 @@ public class IngredientsFragment extends Fragment implements IngredientAdapter.I
         View view = inflater.inflate(R.layout.ingredients_frag, container, false);
        setRecycler(view);
         setInterfaceObjects(view);
-        setInterfaceListeners();
 
         return view;
     }
@@ -92,34 +95,34 @@ public class IngredientsFragment extends Fragment implements IngredientAdapter.I
                 newIngredientsRecycleList(getNewList(v),listColor);
             }
         });
+        newIngredientBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Ingredients)getActivity()).swapFragments(v,1);
+            }
+        });
+
+        getRecipesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Ingredients)getActivity()).swapFragments(v,2);
+            }
+        });
+
+
     }
 
-    private List<Ingredient> getNewList(View v) {
-        List<Ingredient> listToUse = new ArrayList<>();
-        if(v.getId() == R.id.cat_btn_meat){
 
-            listToUse.addAll(IngredientsData.getMeatIngredients());
-           // listToUse = IngredientsData.getMeatIngredients();
-            listColor=0;
-        }else if(v.getId()==R.id.cat_btn_veg){
-            listToUse = IngredientsData.getVegIngredients();
-            listColor=1;
-        }else if(v.getId()==R.id.cat_btn_grain){
-            listToUse = IngredientsData.getEEIngredients();
-            listColor=2;
-        }else if(v.getId()==R.id.cat_btn_all){
-            listToUse = IngredientsData.getMeatIngredients();
-            listToUse.addAll(IngredientsData.getVegIngredients());
-            listToUse.addAll(IngredientsData.getEEIngredients());
-            listColor=3;
-        }
-        return listToUse;
-    }
+
 
     public void setInterfaceObjects(View view){
         meatBtn =(ImageButton)view.findViewById(R.id.cat_btn_meat);
         vegBtn =(ImageButton)view.findViewById(R.id.cat_btn_veg);
         allBtn =(ImageButton)view.findViewById(R.id.cat_btn_all);
+        newIngredientBtn=(Button)view.findViewById(R.id.new_ingredient_btn);
+        getRecipesBtn=(Button)view.findViewById(R.id.find_recipes_btn);
+
+        this.setInterfaceListeners();
     }
 
 
@@ -148,7 +151,27 @@ public class IngredientsFragment extends Fragment implements IngredientAdapter.I
 
     }
 
+    private List<Ingredient> getNewList(View v) {
+        List<Ingredient> listToUse = new ArrayList<>();
+        if(v.getId() == R.id.cat_btn_meat){
 
+            listToUse.addAll(IngredientsData.getMeatIngredients());
+            // listToUse = IngredientsData.getMeatIngredients();
+            listColor=0;
+        }else if(v.getId()==R.id.cat_btn_veg){
+            listToUse = IngredientsData.getVegIngredients();
+            listColor=1;
+        }else if(v.getId()==R.id.cat_btn_grain){
+            listToUse = IngredientsData.getEEIngredients();
+            listColor=2;
+        }else if(v.getId()==R.id.cat_btn_all){
+            listToUse = IngredientsData.getMeatIngredients();
+            listToUse.addAll(IngredientsData.getVegIngredients());
+            listToUse.addAll(IngredientsData.getEEIngredients());
+            listColor=3;
+        }
+        return listToUse;
+    }
     @Override
     public void onItemClick(int p) {
         Ingredient ingredient=(Ingredient)listData.get(p);

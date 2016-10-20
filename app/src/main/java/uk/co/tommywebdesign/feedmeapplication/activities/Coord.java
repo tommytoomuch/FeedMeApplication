@@ -64,4 +64,11 @@ public class Coord extends AppCompatActivity {
     }
 
 
+
+
+    public void getNewIngredientFrag(){
+
+    }
+
+
 }

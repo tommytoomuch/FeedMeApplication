@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="uk.co.tommywebdesign.feedmeapplication.fragments.IngredientsFragment"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/colorPrimary">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,17 +16,19 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Button"
+            android:text="New Ingredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:layout_weight="1" />
+            android:id="@+id/new_ingredient_btn"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorVeg"
+            android:elevation="8dp" />
 
         <Button
-            android:text="Button"
+            android:text="Find Recipes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/find_recipes_btn"
             android:layout_weight="1" />
     </LinearLayout>
 
