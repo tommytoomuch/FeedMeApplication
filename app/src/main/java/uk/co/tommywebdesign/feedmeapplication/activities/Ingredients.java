@@ -3,6 +3,7 @@ package uk.co.tommywebdesign.feedmeapplication.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,10 +21,14 @@ public class Ingredients extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredients_act);
-
-
-
     }
+
+    public void gotoRecipeActivity(int p){
+        //TODO get the data from recipeclicked
+        Intent intent = new Intent("uk.co.tommy.RECIPE");
+        startActivity(intent);
+    }
+
 
     public void swapFragments(View view, int FragNum){
         Fragment newFrag = getNewFragment(FragNum);

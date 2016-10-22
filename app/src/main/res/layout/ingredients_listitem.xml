@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/list_item_container"
-    android:background="#343434">
+    android:background="#343434"
+    android:layout_margin="2dp">
 
     <ImageView
         app:srcCompat="@drawable/meat_and_fish"

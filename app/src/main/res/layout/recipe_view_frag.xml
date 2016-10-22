@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    tools:context="uk.co.tommywebdesign.feedmeapplication.fragments.RecipeViewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -13,23 +14,28 @@
 
         <Button
             android:text="Button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button6"
+            android:id="@+id/button7"
             android:layout_weight="1" />
 
         <Button
             android:text="Button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/button5"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
             android:layout_weight="1" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recipe_results_recycle_view" />
-
-
+        android:id="@+id/recipe_web_view" />
 </LinearLayout>

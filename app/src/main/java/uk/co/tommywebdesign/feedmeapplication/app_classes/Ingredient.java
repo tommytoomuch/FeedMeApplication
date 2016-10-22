@@ -6,9 +6,9 @@ package uk.co.tommywebdesign.feedmeapplication.app_classes;
 
 public class Ingredient {
 
-    private String ingredientName;
-    private int catId;
-
+    public enum Catagories{
+        Meat,Veg,EveryThingElse
+    }
 
     public String getIngredientName() {
         return ingredientName;
@@ -18,13 +18,22 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
-    public int getCatId() {
-        return catId;
+    public Catagories getCatagoryName() {
+        return catagoryName;
     }
 
-    public void setCatId(int catId) {
-        this.catId = catId;
+    public void setCatagoryName(Catagories catagoryName) {
+        this.catagoryName = catagoryName;
     }
+
+    private String ingredientName;
+    private Catagories catagoryName;
+
+
+
+
+
+
 
 
 

@@ -1,8 +1,8 @@
-package uk.co.tommywebdesign.feedmeapplication.app_classes;
+package uk.co.tommywebdesign.feedmeapplication.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import uk.co.tommywebdesign.feedmeapplication.R;
+import uk.co.tommywebdesign.feedmeapplication.app_classes.Ingredient;
 
 /**
  * Created by tommy on 18/10/16.
@@ -24,26 +25,15 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ap
     private List<Ingredient> listData;
     private LayoutInflater inflater;
     private ItemClickCallback itemClickCallback;
+    private ItemLongClickCallback itemLongClickCallback;
 
-    private String[] listBGColors={"#ff554c","#39ff64", "#3d7eff","#fff185"};
-
-    private int bgColor =1;
-
-    public int getBgColor() {
-        return bgColor;
-    }
-
-    public void setBgColor(int bgColor) {
-        this.bgColor = bgColor;
-    }
-
-
+    private String[] listBGColors={"#e4908e","#a2b89e", "#879da7"};
+    private int[] catImageIds = {R.drawable.meat_list_item,R.drawable.veg_list_item,R.drawable.ee_list_item};
 
 
     public IngredientAdapter(List<Ingredient> listItem, Context c){
         this.inflater=LayoutInflater.from(c);
         this.listData=listItem;
-
     }
 
 
@@ -51,6 +41,10 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ap
 
     public interface   ItemClickCallback{
         void onItemClick(int p);
+    }
+
+    public interface ItemLongClickCallback{
+        void onItemLongClick(int p);
     }
 
     public void  setItemClickCallback(final  ItemClickCallback itemClickCallback){
@@ -68,8 +62,20 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ap
 
         Ingredient ingredient =listData.get(position);
         holder.title.setText(ingredient.getIngredientName());
-        holder.icon.setImageResource(ingredient.getCatId());
-        holder.container.setBackgroundColor(Color.parseColor(listBGColors[bgColor]));
+        if(ingredient.getCatagoryName().equals(Ingredient.Catagories.Meat)){
+            holder.icon.setImageResource(catImageIds[0]);
+            holder.container.setBackgroundColor(Color.parseColor(listBGColors[0]));
+        }
+        if(ingredient.getCatagoryName().equals(Ingredient.Catagories.Veg)){
+            holder.icon.setImageResource(catImageIds[1]);
+            holder.container.setBackgroundColor(Color.parseColor(listBGColors[1]));
+        }
+        if(ingredient.getCatagoryName().equals(Ingredient.Catagories.EveryThingElse)){
+            holder.icon.setImageResource(catImageIds[2]);
+            holder.container.setBackgroundColor(Color.parseColor(listBGColors[2]));
+        }
+
+
     }
 
     @Override
@@ -77,7 +83,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ap
         return listData.size();
     }
 
-    class AppHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class AppHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         private TextView title;
         private ImageView icon;
@@ -89,13 +95,20 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ap
             icon = (ImageView) itemView.findViewById(R.id.list_item_icon);
             container = itemView.findViewById(R.id.list_item_container);
             container.setOnClickListener(this);
-
+            container.setOnLongClickListener(this);
         }
 
 
         @Override
         public void onClick(View v) {
             itemClickCallback.onItemClick(getAdapterPosition());
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+
+            itemLongClickCallback.onItemLongClick(getAdapterPosition());
+            return true;
         }
     }
 

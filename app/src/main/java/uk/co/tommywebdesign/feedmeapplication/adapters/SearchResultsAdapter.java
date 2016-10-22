@@ -1,16 +1,18 @@
-package uk.co.tommywebdesign.feedmeapplication.app_classes;
+package uk.co.tommywebdesign.feedmeapplication.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import uk.co.tommywebdesign.feedmeapplication.R;
+import uk.co.tommywebdesign.feedmeapplication.app_classes.Recipe;
 
 /**
  * Created by tommy on 20/10/16.
@@ -79,13 +81,16 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         private TextView recipeTitle;
         private ImageView recipeImg;
         private View container;
+        private Button actionBtn;
 
         public AppHolder(View itemView) {
             super(itemView);
            recipeTitle = (TextView) itemView.findViewById(R.id.search_res_item_title);
             recipeImg = (ImageView) itemView.findViewById(R.id.serach_res_item_image);
-            container = itemView.findViewById(R.id.search_result_item_container);
-            container.setOnClickListener(this);
+            actionBtn = (Button)itemView.findViewById(R.id.goto_recipe_activity_btn);
+            //container = itemView.findViewById(R.id.search_result_item_container);
+            actionBtn.setOnClickListener(this);
+            //container.setOnClickListener(this);
 
         }
 

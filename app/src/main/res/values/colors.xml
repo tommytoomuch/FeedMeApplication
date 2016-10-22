@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3f51b5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#ff4081</color>
-    <color name="colorMeat">#bb2d2d</color>
-    <color name="colorVeg">#22f155</color>
-    <color name="colorEE">#3351ff</color>
-    <color name="colorAll">#999999</color>
+    <color name="colorPrimary">#545454</color>
+    <color name="colorPrimaryDark">#272727</color>
+    <color name="colorAccent">#dd2d3d</color>
+    <color name="colorMeat">#e4908e</color>
+    <color name="colorVeg">#a2b89e</color>
+    <color name="colorEE">#879da7</color>
+    <color name="colorAll">#d5d587</color>
 </resources>

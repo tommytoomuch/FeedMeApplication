@@ -1,9 +1,10 @@
-package uk.co.tommywebdesign.feedmeapplication.app_classes;
+package uk.co.tommywebdesign.feedmeapplication.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.tommywebdesign.feedmeapplication.R;
+import uk.co.tommywebdesign.feedmeapplication.app_classes.Recipe;
 
 /**
  * Created by tommy on 20/10/16.

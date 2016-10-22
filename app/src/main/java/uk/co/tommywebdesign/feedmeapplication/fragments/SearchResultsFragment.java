@@ -2,7 +2,6 @@ package uk.co.tommywebdesign.feedmeapplication.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,10 +11,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import uk.co.tommywebdesign.feedmeapplication.R;
-import uk.co.tommywebdesign.feedmeapplication.app_classes.IngredientAdapter;
-import uk.co.tommywebdesign.feedmeapplication.app_classes.IngredientsData;
-import uk.co.tommywebdesign.feedmeapplication.app_classes.SearchResultData;
-import uk.co.tommywebdesign.feedmeapplication.app_classes.SearchResultsAdapter;
+import uk.co.tommywebdesign.feedmeapplication.activities.Ingredients;
+import uk.co.tommywebdesign.feedmeapplication.data.SearchResultData;
+import uk.co.tommywebdesign.feedmeapplication.adapters.SearchResultsAdapter;
 
 /**
  * Created by tommy on 20/10/16.
@@ -60,6 +58,7 @@ public class SearchResultsFragment extends Fragment implements SearchResultsAdap
     @Override
     public void onItemClick(int p) {
 
+        ((Ingredients)getActivity()).gotoRecipeActivity(p);
 
     }
 
